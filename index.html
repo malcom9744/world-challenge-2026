@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111827" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="World Challenge 2026" />
+    <title>World Challenge 2026</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero-panel">
+        <div>
+          <p class="eyebrow">Mission intercontinentale</p>
+          <h1>World Challenge 2026</h1>
+          <p class="subtitle">
+            Scannez le premier QR pour lancer le chronomètre, validez les codes,
+            franchissez les 5 défis et grimpez au classement des équipes.
+          </p>
+        </div>
+
+        <div class="hero-side">
+          <div class="team-picker">
+            <label for="teamSelect">Équipe</label>
+            <select id="teamSelect"></select>
+          </div>
+          <button id="adminBtn" class="secondary-btn admin-btn">Admin</button>
+          <div class="timer-card">
+            <span>Chronomètre</span>
+            <strong id="timer">00:00</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="status-panel">
+        <div class="progress-wrapper">
+          <div class="progress-meta">
+            <span>Barre de progression</span>
+            <span id="progressText">0 / 5 défis</span>
+          </div>
+          <div class="progress-track">
+            <div id="progressBar" class="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button id="startBtn" class="primary-btn">Pause</button>
+          <button id="resetBtn" class="secondary-btn">Réinitialiser</button>
+          <button id="publishBtn" class="secondary-btn">Publier</button>
+        </div>
+      </section>
+
+      <section class="leaderboard-panel">
+        <div class="section-header">
+          <h2>Classement des équipes</h2>
+          <span class="mini-pill">Top 5</span>
+        </div>
+        <ol id="leaderboardList" class="leaderboard-list"></ol>
+      </section>
+
+      <main class="challenge-grid" id="challengeGrid"></main>
+    </div>
+
+    <div id="feedbackOverlay" class="feedback-overlay hidden">Code validé</div>
+
+    <div id="qrModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card">
+        <button id="closeModal" class="close-btn" aria-label="Fermer">×</button>
+        <div class="modal-header">
+          <p>QR code du défi</p>
+          <h2 id="modalTitle">Défi</h2>
+        </div>
+        <div class="qr-display" id="qrDisplay"></div>
+        <p class="modal-note">Le QR visuel sert de repère. Utilisez le scanner caméra pour lire le code depuis votre téléphone.</p>
+      </div>
+    </div>
+
+    <div id="scannerModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card scanner-card">
+        <button id="closeScanner" class="close-btn" aria-label="Fermer">×</button>
+        <div class="modal-header">
+          <p>Scanner</p>
+          <h2>Caméra du téléphone</h2>
+        </div>
+        <video id="cameraPreview" autoplay playsinline muted></video>
+        <canvas id="cameraCanvas" width="320" height="240"></canvas>
+        <p id="scannerStatus" class="modal-note">Pointez la caméra sur le QR code du défi.</p>
+      </div>
+    </div>
+
+    <div id="adminModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-card admin-card">
+        <button id="closeAdmin" class="close-btn" aria-label="Fermer">×</button>
+        <div class="modal-header">
+          <p>Administration</p>
+          <h2>Modifier les défis</h2>
+        </div>
+
+        <div id="adminLogin" class="admin-login">
+          <label for="adminPassword">Mot de passe</label>
+          <input id="adminPassword" class="code-input" type="password" placeholder="Entrez le mot de passe" />
+          <button id="loginAdmin" class="primary-btn">Accéder</button>
+        </div>
+
+        <div id="adminDashboard" class="hidden admin-dashboard">
+          <div id="adminForm"></div>
+          <button id="saveAdmin" class="primary-btn">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="victoryScreen" class="victory-screen hidden" aria-hidden="true">
+      <div class="victory-card">
+        <p class="victory-label">Écran de victoire</p>
+        <h2>Bravo, mission accomplie !</h2>
+        <p id="victoryTime">Temps final : 00:00</p>
+        <div id="victoryTeam" class="victory-team"></div>
+        <button id="restartBtn" class="primary-btn">Rejouer</button>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+    <div id="confettiLayer" class="confetti-layer"></div>
+
+    <script src="jsqr.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

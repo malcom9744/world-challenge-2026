@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#22c55e" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="#06131f" />
+  <rect x="64" y="64" width="384" height="384" rx="64" fill="url(#g)" fill-opacity="0.18" stroke="url(#g)" stroke-width="12"/>
+  <text x="256" y="250" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700" fill="#e5f0ff">WC</text>
+  <text x="256" y="330" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="700" fill="#7dd3fc">2026</text>
+</svg>
